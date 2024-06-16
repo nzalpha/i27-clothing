@@ -44,7 +44,7 @@ parameters {
 
             steps{
                 echo "Docker Build and push method"
-                sh "docker build -t nzimg:v1 ."
+                sh "docker build -t ${env.APPLICATION_NAME}:${GIT_COMMIT} ."
                 echo "BuildDone"
                 echo "-----------Docker Login--------------"
                 sh "docker login -u ${env.DOCKER_CREDS_USR} -p ${env.DOCKER_CREDS_PSW}"
