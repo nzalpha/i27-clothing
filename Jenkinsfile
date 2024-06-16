@@ -69,19 +69,19 @@ environment {
         }
 
         
-        stage("Deploy to test")
-        {
-            steps{
-                echo "Deploy to Test"
-                withCredentials([usernamePassword(credentialsId: 'ali_docker_vm_cred', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+        // stage("Deploy to test")
+        // {
+        //     steps{
+        //         echo "Deploy to Test"
+        //         withCredentials([usernamePassword(credentialsId: 'ali_docker_vm_cred', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                 
-                echo "inside the test script1"
-                script{
-                 sh "sshpass -p ${PASSWORD} ssh -o StrictHostKeyChecking=no ${USERNAME}@${docker_server_ip} docker run -P --env ENVIRONMENT=test --name ${env.APPLICATION_NAME}-${env.AREA}-${GIT_COMMIT} ${env.DOCKER_HUB}/${env.APPLICATION_NAME}:${GIT_COMMIT}"
-                }
-                }
-            }
-        }
+        //         echo "inside the test script1"
+        //         script{
+        //          sh "sshpass -p ${PASSWORD} ssh -o StrictHostKeyChecking=no ${USERNAME}@${docker_server_ip} docker run -P ${env}=test --name ${env.APPLICATION_NAME}-${env.AREA}-${GIT_COMMIT} ${env.DOCKER_HUB}/${env.APPLICATION_NAME}:${GIT_COMMIT}"
+        //         }
+        //         }
+        //     }
+        // }
 
 
     }
