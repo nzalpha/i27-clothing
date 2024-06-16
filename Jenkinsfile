@@ -21,10 +21,10 @@ environment {
 parameters {
         choice (name: 'buildOnly', choices: 'no\nyes', description: "Only Build")
         choice (name: 'DockerPushOnly', choices: 'no\nyes', description: "Only Push to registry")
-        choice (name: 'DeploytoDev', choices: 'no\nyes', description: "Only deploy to dev")
-        choice (name: 'DeploytoTest', choices: 'no\nyes', description: "Only deploy to test")
-        choice (name: 'DeploytoStage', choices: 'no\nyes', description: "Only deploy to stage")
-        choice (name: 'DeploytoProd', choices: 'no\nyes', description: "Only deploy to prod")
+        // choice (name: 'DeploytoDev', choices: 'no\nyes', description: "Only deploy to dev")
+        // choice (name: 'DeploytoTest', choices: 'no\nyes', description: "Only deploy to test")
+        // choice (name: 'DeploytoStage', choices: 'no\nyes', description: "Only deploy to stage")
+        // choice (name: 'DeploytoProd', choices: 'no\nyes', description: "Only deploy to prod")
 
     }
 
@@ -72,7 +72,7 @@ parameters {
 dockerBuildAndPush(){
     return{
          echo "Docker Build and push method"
-        sh "docker build -t nzimg:v1"
+        sh "docker build -t nzimg:v1 ."
         echo "BuildDone"
         sh "docker images"
     }
