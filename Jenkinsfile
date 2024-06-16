@@ -5,14 +5,14 @@ pipeline {
         label 'K8-slave'
     }
     tools {
-        maven 'mvn 3.8'
+        // maven 'mvn 3.8'
         jdk 'jdk-17'
     }
 
 environment {
-        APPLICATION_NAME = "product"
-        POM_VERSION = readMavenPom().getVersion()
-        POM_PACKAGING = readMavenPom().getPackaging()
+        APPLICATION_NAME = "clothing"
+        // POM_VERSION = readMavenPom().getVersion()
+        // POM_PACKAGING = readMavenPom().getPackaging()
         DOCKER_HUB= "docker.io/nawaz004"
         DOCKER_CREDS= credentials('docker_cred')
     }
@@ -27,6 +27,7 @@ parameters {
         choice (name: 'DeploytoProd', choices: 'no\nyes', description: "Only deploy to prod")
 
     }
+
 
     stages {
         stage ('Build') {
