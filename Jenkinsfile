@@ -11,6 +11,7 @@ pipeline {
 
 environment {
         APPLICATION_NAME = "clothing"
+        AREA = "dev"
         // POM_VERSION = readMavenPom().getVersion()
         // POM_PACKAGING = readMavenPom().getPackaging()
         DOCKER_HUB= "docker.io/nawaz004"
@@ -52,6 +53,21 @@ parameters {
         }
 
         }
+
+        stage("Deploy to Dev")
+        {
+            steps{
+                echo "Deploy to Dev"
+                withCredentials([usernamePassword(credentialsId: 'ali_docker_vm_cred', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+                sh """
+                echo "inside the script"
+                 sh "sshpass -p ${PASSWORD} ssh -o StrictHostKeyChecking=no ${USERNAME}@${docker_server_ip} docker run -P --name ${env.APPLICATION_NAME}-${env.AREA} ${env.DOCKER_HUB}/${env.APPLICATION_NAME}:${GIT_COMMIT}"
+                """
+                }
+            }
+        }
+
+
     }
 }
 
