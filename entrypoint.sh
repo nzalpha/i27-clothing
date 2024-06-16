@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ENVIRONMENT="${1-dev}"
+ENVIRONMENT="${1}"
 
 case "$ENVIRONMENT" in
 
