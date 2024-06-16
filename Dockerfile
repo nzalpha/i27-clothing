@@ -1,6 +1,6 @@
 FROM node:14
 ARG SRC_DIR=/opt/i27
-RUN MKDIR $SRC_DIR
+RUN mkdir $SRC_DIR
 WORKDIR $SRC_DIR
 COPY . $SRC_DIR
 RUN npm install
