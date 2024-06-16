@@ -31,15 +31,6 @@ parameters {
 
     stages {
         stage ('Build') {
-            when{
-                anyOf{
-                    expression{
-                        params.buildOnly == 'yes'
-                    }
-                }
-            }
-
-
             // This step will take care of building the application
             steps {
                 echo "Build"
@@ -49,31 +40,14 @@ parameters {
 
         stage("Docker build and Push")
         {
-            when{
-                anyOf{
-                    expression{
-                        params.DockerPushOnly == 'yes'
-                    }
-                }
-            }
+
             steps{
-                 echo "Docker Build"
-                script{
-                    dockerBuildAndPush().call()
-                }
-                
-            }
+                echo "Docker Build and push method"
+                sh "docker build -t nzimg:v1 ."
+                echo "BuildDone"
+                sh "docker images"
         }
 
 }
 }
 
-
-dockerBuildAndPush(){
-    return{
-         echo "Docker Build and push method"
-        sh "docker build -t nzimg:v1 ."
-        echo "BuildDone"
-        sh "docker images"
-    }
-}
