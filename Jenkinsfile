@@ -20,8 +20,8 @@ environment {
 
 
 parameters {
-        choice (name: 'buildOnly', choices: 'no\nyes', description: "Only Build")
-        choice (name: 'DockerPushOnly', choices: 'no\nyes', description: "Only Push to registry")
+        // choice (name: 'buildOnly', choices: 'no\nyes', description: "Only Build")
+        // choice (name: 'DockerPushOnly', choices: 'no\nyes', description: "Only Push to registry")
         // choice (name: 'DeploytoDev', choices: 'no\nyes', description: "Only deploy to dev")
         // choice (name: 'DeploytoTest', choices: 'no\nyes', description: "Only deploy to test")
         // choice (name: 'DeploytoStage', choices: 'no\nyes', description: "Only deploy to stage")
