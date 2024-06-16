@@ -45,10 +45,13 @@ parameters {
                 echo "Docker Build and push method"
                 sh "docker build -t nzimg:v1 ."
                 echo "BuildDone"
-                sh "docker images"
+                echo "-----------Docker Login--------------"
+                sh "docker login -u ${env.DOCKER_CREDS_USR} -p ${env.DOCKER_CREDS_PSW}"
+                echo "-------------Docker Push-----------"
+                 sh "docker push ${env.DOCKER_HUB}/${env.APPLICATION_NAME}:${GIT_COMMIT}"
         }
 
-}
-}
+        }
+    }
 }
 
