@@ -41,9 +41,7 @@ parameters {
 
             // This step will take care of building the application
             steps {
-                script{
-                 buildApp().call()
-                }
+                echo "Build"
             }
         }
     
@@ -58,6 +56,7 @@ parameters {
                 }
             }
             steps{
+                 echo "Docker Build"
                 script{
                     dockerBuildAndPush().call()
                 }
@@ -70,6 +69,7 @@ parameters {
 
 dockerBuildAndPush(){
     return{
+         echo "Docker Build and push method"
         sh "docker build -t nzimg:v1"
         echo "BuildDone"
         sh "docker images"
