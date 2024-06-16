@@ -62,7 +62,7 @@ parameters {
                 
                 echo "inside the script1"
                 script{
-                 sh "sshpass -p ${PASSWORD} ssh -o StrictHostKeyChecking=no ${USERNAME}@${docker_server_ip} docker run -P -e ENVIRONMENT=test --name ${env.APPLICATION_NAME}-${env.AREA}-${GIT_COMMIT} ${env.DOCKER_HUB}/${env.APPLICATION_NAME}:${GIT_COMMIT}"
+                 sh "sshpass -p ${PASSWORD} ssh -o StrictHostKeyChecking=no ${USERNAME}@${docker_server_ip} docker run -P --env ENVIRONMENT=test --name ${env.APPLICATION_NAME}-${env.AREA}-${GIT_COMMIT} ${env.DOCKER_HUB}/${env.APPLICATION_NAME}:${GIT_COMMIT}"
                 }
                 }
             }
